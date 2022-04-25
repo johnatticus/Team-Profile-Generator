@@ -50,20 +50,23 @@ const empQuestions = [
         }
     },
     {
-        type: "confirm",
+        type: "list",
         name: "addemployee",
         message: "Input another worker?",
+        choices: ['Yes', 'No'],
     }
 ];
 
 function init() {
-    console.log("Hello valued employee. Welcome to the team builder thing. Let's begin...")
+    console.log("Hello valued employee. Time to assemble our workforce. Let us begin.")
     inquirer.prompt(empQuestions)
     .then((answers) => {
         const newWorker = createWorker(answers);
-        team.push(newWorker);
-        if (answers.addemployee === true) {
+        workForce.push(newWorker);
+        if (answers.addemployee === 'Yes') {
             inquirer.prompt(empQuestions)
+        } else {
+            // fs code to write html
         }
     });
 }
