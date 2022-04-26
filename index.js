@@ -1,9 +1,10 @@
 const fs = require("fs");
-const path = require("path");
+// const path = require("path");
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const htmlMaker = require("./htmlmaker")
 
 // const Employee = require("./lib/Employee")
 const workForce = []
@@ -73,7 +74,9 @@ function init() {
             init();
         } else {
             // fs code to write html
-        }
+            fs.writeFile('./dist/workforce.html', htmlMaker(workForce), (err) =>
+            err ? console.log(err) : console.log('Work Force html has been created.')
+            )};
     });
 }
 
