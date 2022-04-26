@@ -7,5 +7,25 @@
   },
   "scripts": {
     "test": "jest"
-  }
+  },
+  "name": "team-profile-generator",
+  "description": "Creates a team profile page through terminal commands",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnatticus/Team-Profile-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnatticus/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/johnatticus/Team-Profile-Generator#readme"
 }
