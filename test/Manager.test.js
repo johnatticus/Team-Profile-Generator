@@ -4,7 +4,7 @@ const Manager = require("../lib/Manager");
 it("Set office number using constructor argument", () => {
     const office = 5555555555;
     const e = new Manager("Randy", 1, "randy@company.com", office);
-    expect(e.officenumber).toBe(office);
+    expect(e.officeNumber).toBe(office);
 })
 // can get office number
 // role returns manager
