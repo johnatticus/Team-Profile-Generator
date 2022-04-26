@@ -72,7 +72,14 @@ function init() {
 }
 
 function createWorker(answers) {
-
+    let newWorker;
+    if (answers.role === 'Manager') {
+        newWorker = new Manager(answers.name, answers.id, answers.email, answers.officenumber);
+    } else if (answers.role === 'Engineer') {
+        newWorker = new Engineer(answers.name, answers.id, answers.email, answers.github);
+    } else if (answers.role === 'Intern') {
+        newWorker = new Intern(answers.name, answers.id, answers.email, answers.school);
+    } return newWorker;
 }
 
 init();
