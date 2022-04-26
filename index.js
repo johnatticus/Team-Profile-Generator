@@ -13,17 +13,36 @@ const empQuestions = [
     {
         type: "input",
         name: "name",
-        message: "Welcome team member, please enter name:"
+        message: "Welcome team member, please enter name:",
+        validate: (answer) => {
+            if (answer !== "") {
+                return true;
+            }
+            return "Enter a valid name";
+        }
     },
     {
         type: "input",
         name: "id",
-        message: "Enter ID number:"
+        message: "Enter ID number:",
+        validate: (answer) => {
+            if (answer !== "") {
+                return true;
+            }
+            return "Enter a valid name";
+        }
     },
     {
         type: "input",
         name: "email",
-        message: "Enter e-mail address:"
+        message: "Enter e-mail address:",
+        validate: (answer) => {
+            const pass = answer.match(/^\S+@\S+\.\S+/)
+            if (pass) {
+                return true;
+            }
+            return "Enter valid e-mail address";
+        }
     },
     {
         type: "list",
@@ -38,6 +57,7 @@ const empQuestions = [
         when: function(answers) {
             return answers.role === 'Manager';
         }
+        
     },
     {
         type: "input",
