@@ -13,7 +13,7 @@ const managerQuestions = [
     {
         type: "input",
         name: "name",
-        message: "Welcome team manager, please enter name:",
+        message: "Manager, enter name:",
         validate: (answer) => {
             if (answer !== "") {
                 return true;
@@ -107,7 +107,7 @@ const empQuestions = [
     {
         type: "input",
         name: "gitHub",
-        message: "Enter worker's GitHub username:",
+        message: "Enter worker' github username:",
         when: function(answers) {
             return answers.role === 'Engineer';
         },
@@ -141,7 +141,8 @@ const empQuestions = [
 ];
 
 function init() {
-    console.log("Welcome, valued management employee. It is time to enter our workers into our workforce database. Let us begin entering your personal information")
+    console.log(" _    _            _     __                    ______      _        _                   \r\n| |  | |          | |   \/ _|                   |  _  \\    | |      | |                   \r\n| |  | | ___  _ __| | _| |_ ___  _ __ ___ ___  | | | |__ _| |_ __ _| |__   __ _ ___  ___ \r\n| |\/\\| |\/ _ \\| \'__| |\/ \/  _\/ _ \\| \'__\/ __\/ _ \\ | | | \/ _` | __\/ _` | \'_ \\ \/ _` \/ __|\/ _ \\\r\n\\  \/\\  \/ (_) | |  |   <| || (_) | | | (_|  __\/ | |\/ \/ (_| | || (_| | |_) | (_| \\__ \\  __\/\r\n \\\/  \\\/ \\___\/|_|  |_|\\_\\_| \\___\/|_|  \\___\\___| |___\/ \\__,_|\\__\\__,_|_.__\/ \\__,_|___\/\\___|\r\n                                                                                         \r\n                                                                                         ")
+    console.log("Welcome, valued management employee. It is time to enter workers into our workforce database. Let us begin by inputing your personal information.")
     inquirer.prompt(managerQuestions)
     .then((answers) => {
         const newWorker = createManager(answers);
@@ -158,7 +159,7 @@ function init() {
 }
 
 function initWorkers() {
-    console.log("Another worker to be entered. Excellent. Let us continue.")
+    console.log("Worker input system initialized. Let us continue.")
     inquirer.prompt(empQuestions)
     .then((answers) => {
         const newWorker = createWorker(answers);
@@ -169,7 +170,7 @@ function initWorkers() {
         } else {
             // fs code to write html
             fs.writeFile('./dist/workforce.html', htmlMaker(workForce), (err) =>
-            err ? console.log(err) : console.log('Work Force html has been created.')
+            err ? console.log(err) : console.log('All worker inputs completed. Please view the Workforce Database HTML file at your earliest convenience. Thank you for your cooperation, Manager.')
             )};
     });
 }
