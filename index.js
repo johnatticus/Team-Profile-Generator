@@ -1,14 +1,15 @@
+// requirements
 const fs = require("fs");
-// const path = require("path");
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const htmlMaker = require("./htmlmaker")
 
-// const Employee = require("./lib/Employee")
+// empty array that we will push our team members to that are generated through prompts
 const workForce = []
 
+// array of questions for the manager
 const managerQuestions = [
     {
         type: "input",
@@ -63,6 +64,7 @@ const managerQuestions = [
     }
 ];
 
+// array of questions for non-manager employees
 const empQuestions = [
     {
         type: "list",
@@ -140,6 +142,10 @@ const empQuestions = [
     }
 ];
 
+// initial function that is ran when the app is started
+// launches the manager questions first
+// than takes answers, creates a new worker out of them and pushes to the empty array
+// determines by user choice is new workers should be added or to finish and write the HTML file
 function init() {
     console.log(" _    _            _     __                    ______      _        _                   \r\n| |  | |          | |   \/ _|                   |  _  \\    | |      | |                   \r\n| |  | | ___  _ __| | _| |_ ___  _ __ ___ ___  | | | |__ _| |_ __ _| |__   __ _ ___  ___ \r\n| |\/\\| |\/ _ \\| \'__| |\/ \/  _\/ _ \\| \'__\/ __\/ _ \\ | | | \/ _` | __\/ _` | \'_ \\ \/ _` \/ __|\/ _ \\\r\n\\  \/\\  \/ (_) | |  |   <| || (_) | | | (_|  __\/ | |\/ \/ (_| | || (_| | |_) | (_| \\__ \\  __\/\r\n \\\/  \\\/ \\___\/|_|  |_|\\_\\_| \\___\/|_|  \\___\\___| |___\/ \\__,_|\\__\\__,_|_.__\/ \\__,_|___\/\\___|\r\n                                                                                         \r\n                                                                                         ")
     console.log("Welcome, valued management employee. It is time to enter workers into our workforce database. Let us begin by inputing your personal information.")
@@ -158,6 +164,8 @@ function init() {
     });
 }
 
+// function that runs if user wants to add more workers beyond the manager
+// operates the same or similar to the init function
 function initWorkers() {
     console.log("Worker input system initialized. Let us continue.")
     inquirer.prompt(empQuestions)
@@ -175,6 +183,9 @@ function initWorkers() {
     });
 }
 
+// function that runs when the manager is created
+// takes the answers data to create a new class
+// works in conjunction with the init function
 function createManager(answers) {
     let newWorker;
     if (answers.officeNumber !== '') {
@@ -182,6 +193,9 @@ function createManager(answers) {
     } return newWorker;
 }
 
+// function that runs when a non-manager employee is created
+// takes the answers data to create a new class
+// works in conjunction with the initWorkers function
 function createWorker(answers) {
     let newWorker;
     if (answers.role === 'Engineer') {
@@ -191,4 +205,5 @@ function createWorker(answers) {
     } return newWorker;
 }
 
+// tells file to run init function when started
 init();

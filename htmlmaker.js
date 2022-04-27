@@ -1,5 +1,8 @@
+// empty array to fill with html cards
 const workerCards = []
 
+// function that says for each worker in the array to run the corresponding function to create html cards
+// also sets the base of HTML, minus the worker cards
 function htmlMaker(workForce) {
     workForce.forEach((newWorker) => {
         if(newWorker.getRole() === 'Manager'){
@@ -46,6 +49,8 @@ function htmlMaker(workForce) {
     `
 };
 
+// following three functions create html bootstrap cards for manager, engineer, and interns
+// the cards are pushed to the empty array and than joined in the html in the above fucntion
 function createManager(Manager) {
     workerCards.push(`
     <div class="card mb-3 shadow" style="min-width: 20rem; max-width: 20rem;">
